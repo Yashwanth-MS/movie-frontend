@@ -315,6 +315,12 @@
         </div>
     </footer>
     <script>
+        // =========================================================================
+        // CONFIGURATION: If deploying to production (e.g. Render), replace this 
+        // with your own deployed backend service URL (e.g. https://your-app.onrender.com)
+        // =========================================================================
+        const PRODUCTION_API_URL = "https://my-movie-api-71fv.onrender.com";
+
         document.addEventListener('DOMContentLoaded', () => {
             const recommendBtn = document.getElementById('recommendBtn');
             const searchInput = document.getElementById('searchInput');
@@ -573,7 +579,7 @@
 
                 // Fall back to production Render API
                 try {
-                    const prodResponse = await fetch(`https://my-movie-api-71fv.onrender.com/${endpoint}?${query}`);
+                    const prodResponse = await fetch(`${PRODUCTION_API_URL}/${endpoint}?${query}`);
                     if (prodResponse.ok) {
                         return await prodResponse.json();
                     }
